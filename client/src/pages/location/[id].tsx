@@ -105,14 +105,14 @@ const Location = ({ data }: any) => {
             </span>
           </div>
           <Toolbar
-            clss="pr-5">
+            clss="pr-7 self-end">
               <Toolbar.Iconbar
                 alt="Assign device to current office"
                 src="/assets/add.svg"
                 onClick={() => setOnShow(!onShow)}
               />
-            </Toolbar>
-      
+          </Toolbar>
+      {/* confirm changes */}
         </div>
         <div className="m-5">
           <List
