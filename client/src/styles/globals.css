@@ -73,6 +73,8 @@ aside {
   padding: 10px;
 }
 video {
+
+
   background-image: url(/assets/stopVideoBackground.svg);
   background-repeat: no-repeat;
   background-position: center;
@@ -112,4 +114,5 @@ video {
   background-position: bottom;
   background-size: 100% 1px;
   background-repeat: no-repeat;
+  background-color:rgb(0, 0, 0);
 }

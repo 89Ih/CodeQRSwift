@@ -30,7 +30,7 @@ function Inserting() {
   }
   return (
     <section className=" min-h-screen flex flex-col">
-        <div className="pl-4 h-20 flex  justify-between items-center _div_line">
+        <div className="sticky top-0 pl-4 h-20 flex  justify-between items-center _div_line">
         <Link  href="/">
         <p className=" text-4xl  ">
           <span className="text-slate-600">QR</span>
