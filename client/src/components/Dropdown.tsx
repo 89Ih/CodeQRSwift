@@ -17,7 +17,8 @@ const Dropdown: FC<dropdownProps> = ({ label, value, onChange, loop }) => {
             <label 
                 htmlFor={`static-${label}`} 
                 className="text-xs text-slate-700 font-bold uppercase  tracking-wide">
-                    {label} 
+                    {label}
+                    {" "} 
                 <b className="text-red-700">*</b>
             </label>
             <select

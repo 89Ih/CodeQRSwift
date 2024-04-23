@@ -27,7 +27,7 @@ class RestService {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ officeNr: null }),
+        body: JSON.stringify({ officeNr: "" }),
       });
 
       if (!res.ok) {

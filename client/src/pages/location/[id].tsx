@@ -3,8 +3,8 @@ import List from "@/components/List";
 import Toolbar from "@/components/Toolbar";
 import restService from "@/service/rest.service";
 import Link from "next/link";
-import { useRouter } from "next/router";
-// import { useRouter } from "next/navigation";
+import { useRouter as useRouterRouter } from "next/router";
+import { useRouter as useRouterNavigation } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export async function getServerSideProps({ query }: any) {
@@ -26,14 +26,17 @@ export async function getServerSideProps({ query }: any) {
 // };
 
 const Location = ({ data }: any) => {
-  const router = useRouter();
+  const router = useRouterRouter();
+  const routerNavigation = useRouterNavigation();
   const location = router.query.id;
   const [onShow, setOnShow] = useState<Boolean>(false);
   const [msg, setMsg] = useState<any | string>({ style: "", text: "" });
 
   const handleMSG = (style: string, text: string) => {
     setMsg({ style: style, text: text });
-    return setTimeout(() => {
+    return setTimeout(async() => {
+       await restService.getAssigndDevices( `${location}`);
+       routerNavigation.refresh()
       return setMsg({ style: "", text: "" });
     }, 1000);
   };
@@ -59,14 +62,15 @@ const Location = ({ data }: any) => {
                 );
                 return;
               }
-              if (officeNr === null || officeNr === "") {
-                handleMSG(
+              if (officeNr === "") {
+                  handleMSG(
                   "text-green-600",
                   `The device has been successfully assigned to the Office number: <b>${location}</b>`
                 );
                 return restService.assignDevice(deviceId, `${location}`);
+             
               }
-              if (officeNr !== null || officeNr !== "") {
+              if (officeNr !== "" || !officeNr) {
                 return handleMSG(
                   "text-red-500",
                   `This device is assigned to another office:  ${officeNr}`
@@ -101,7 +105,7 @@ const Location = ({ data }: any) => {
               Location: <strong>{location}</strong>
             </span>
             <span>
-              Devices: <strong>{data.length}</strong>
+              Devices: <strong>{data.length === 0 ? 'No devices assigned to this location' :data.length}</strong>
             </span>
           </div>
           <Toolbar

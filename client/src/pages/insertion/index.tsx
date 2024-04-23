@@ -1,4 +1,4 @@
-import { FormEvent, ChangeEvent, useEffect, useState } from "react";
+import { FormEvent,useState } from "react";
 import { departmentArr, buildingArr, floorArr } from "@/static_/static";
 import QRCode from "react-qr-code";
 import Link from "next/link";
@@ -6,6 +6,8 @@ import Tab, { getByID } from "@/components/Tab";
 import restService from "@/service/rest.service";
 import Dropdown from "@/components/Dropdown";
 import Aside from "@/components/Aside";
+import { useRouter } from "next/navigation";
+
 function Inserting() {
   const [building, setBuilding] = useState<string>("");
   const [floor, setFloor] = useState<string>("");
@@ -13,15 +15,14 @@ function Inserting() {
   const [officeNr, setOfficeNr] = useState<string>("");
   const [loader, setLoader] = useState<boolean>(false);
   const combaind = building + floor + department;
-  // const handleChnage=(event:ChangeEvent<HTMLSelectElement>)=>{
-  //    SetPCode([...PCode,event.currentTarget.value])
-  // }
+  const router = useRouter();
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setLoader(true)
     const formData = { building, floor, department, officeNr };
     return restService.declareOffice(formData).then((res) => {
     setLoader(false)
+    return router.push(`/location/${combaind}`);
     }).catch((err)=>{
         console.error(err);
         setLoader(false)

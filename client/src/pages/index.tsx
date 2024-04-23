@@ -13,7 +13,7 @@ export default function Home({ data }: any) {
     console.log(num);
 
     const filterd = data.some((item: any) => {
-      return item.officeNr === num;
+      return item.officeNr === num; 
     });
     if (filterd === true) {
       return router.push(`/location/${num}`);
