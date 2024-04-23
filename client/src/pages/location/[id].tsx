@@ -112,7 +112,6 @@ const Location = ({ data }: any) => {
                 onClick={() => setOnShow(!onShow)}
               />
           </Toolbar>
-         {/*confirm changes*/}
         </div>
         <div className="m-5">
           <List

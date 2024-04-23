@@ -38,10 +38,38 @@ body {
   outline: unset !important;
   box-shadow: unset !important;
 }
+/* rounded-md w-full h-8 */
+._selectOpt {
+  padding-left: 10px;
+  width: 100%;
+  height: 38px;
+  border-radius: 5px;
+  background-color: #0000002c;
+  background-image: url(../../public/assets/arrowDown.svg);
+  background-repeat: no-repeat;
+  background-size: 10px 10px;
+  background-position: 96% 15px;
+  display: flex;
+  align-items: center;
+  appearance: none;
+  outline: thin outset rgba(5, 31, 66, 0.349);
+  border: thin inset rgba(231, 235, 240, 0.219);
+}
+._selectOpt:focus {
+  outline: thin outset rgba(5, 31, 66, 0.349);
+  border: thin inset rgba(231, 235, 240, 0.219);
+  box-shadow: unset;
+}
+
+._selectOpt > option {
+  color: #cbd5e1;
+  background-color: #090909 !important;
+}
 ._placeholder {
   font-family: initial;
   font-style: italic;
 }
+
 ._bg-trans {
   background-color: #ffffff09 !important;
 }
@@ -50,40 +78,49 @@ aside {
   width: 275px;
   animation-name: aside-anime;
   animation-duration: 500ms;
+  z-index: 999 !important;
+  background-color: #090b0f;
 }
+
 @keyframes aside-anime {
   0% {
     width: 1px;
   }
+
   100% {
     width: 275px;
   }
 }
+
 .anchor-container > div {
   background-color: #ffffff09;
   border-bottom: thin solid #334155;
 }
+
 /*# do not touch */
 .tabcontent {
   display: none;
 }
+
 /* # border for QR-Reader */
 #canvas {
   border: 5px double #ffffff20;
+  border-radius: 5px;
   padding: 10px;
 }
+
 video {
-
-
   background-image: url(/assets/stopVideoBackground.svg);
   background-repeat: no-repeat;
   background-position: center;
 }
+
 /* Custom loader (-_-) */
 .loader-wrapper {
   padding-top: 3px;
   transform: translateX(-6px);
 }
+
 .loader {
   border: 4px solid rgba(172, 241, 82, 0.699);
   border-top: 4px solid #334155;
@@ -92,10 +129,12 @@ video {
   height: 20px;
   animation: spin 1s linear infinite;
 }
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -114,9 +153,9 @@ video {
   background-position: bottom;
   background-size: 100% 1px;
   background-repeat: no-repeat;
-  background-color:rgb(0, 0, 0);
+  background-color: rgb(0, 0, 0);
 }
 
-._pr{
+._pr {
   padding-right: 15px;
 }

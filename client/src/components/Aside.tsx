@@ -20,8 +20,8 @@ const Aside: FC<any> = () => {
       {toggle === true && (
         <aside
           onClick={() => setToggle(false)}
-          style={{ backgroundColor: "#090b0f" }}
-          className={`fixed min-h-fullright-0 bottom-0 top-0 z-10`}
+    
+          className={`fixed min-h-fullright-0 bottom-0 top-0 _z-99`}
         >
           <div className="flex flex-col gap-5 ">
             <div className="flex justify-between m-4">

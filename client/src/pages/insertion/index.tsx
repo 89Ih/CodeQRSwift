@@ -71,7 +71,9 @@ function Inserting() {
                   value={department}
                   onChange={(event) => setDepartment(event.target.value)}
                 />
-                <div className="flex flex-col gap-2 pr-5 pt-5">
+
+
+                <div className="flex flex-col gap-2  pt-5">
                   <QRCode
                     id="canvas"
                     size={165}
@@ -89,12 +91,12 @@ function Inserting() {
                     {(building && floor && department) !== ""
                       ? <span className="text-green-600 hover:text-green-400">download</span>
                       : <span className="text-red-600">{combaind}</span>
-                      }
+                    }
                   </button>
                 </div>
                 <button
                   disabled={(building && floor && department) === ""}
-                  className="mt-1 rounded-md w-full py-1 bg-slate-700 flex"
+                  className="mt-1 rounded-md w-full py-1 bg-slate-700 flex items-center h-9"
                   type="submit"
                 >
                   <span className="w-full">Submit</span>
