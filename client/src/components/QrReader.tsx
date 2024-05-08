@@ -60,7 +60,7 @@ const QrReader: React.FC<QrReaderProps> = ({ handleNav }) => {
       );
   }, [qrOn]);
   return (
-    <div className={`flex flex-col items-center justify-center`}>
+    <div className={`flex flex-col items-center justify-center `}>
       <video
         ref={videoEl}
         className={` w-60 h-60 border border-solid border-slate-800 rounded-md object-cover`}

@@ -7,7 +7,7 @@ import InnerHTML from "./InnerHTML";
 const Aside: FC<any> = () => {
   const [toggle, setToggle] = useState<boolean>(false);
   return (
-    <section className="flex flex-col items-end" style={{ width: "275px" }}>
+    <section className="flex flex-col items-end" style={{ width: "275px"}}>
       <Image
        className="fixed top-3 right-2 "
         height={40}
@@ -37,13 +37,19 @@ const Aside: FC<any> = () => {
               <div className="h-10 w-full py-1 px-3 flex gap-2 items-center">
                 <div dangerouslySetInnerHTML={{ __html: icons.insertIcon }} />
                 <Link className="w-60" href="/insertion">
-                  Insert Devices
+                  Insertion
                 </Link>
               </div>
               <div className="h-10 w-full py-1 px-3 flex gap-2 items-center ">
                 <div dangerouslySetInnerHTML={{ __html: icons.locationIcon }} />
-                <Link className="w-60" href="/location/S01">
+                <Link className="w-60" href="/location/MA2ndSA">
                   Location
+                </Link>
+              </div>
+              <div className="h-10 w-full py-1 px-3 flex gap-2 items-center ">
+                <div dangerouslySetInnerHTML={{ __html: icons.devicesIcon }} />
+                <Link className="w-60" href="/devices">
+                  Devices
                 </Link>
               </div>
               <div className="h-10 w-full py-1 px-3 flex gap-2 items-center">

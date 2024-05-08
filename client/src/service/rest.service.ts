@@ -20,7 +20,7 @@ class RestService {
     const data = await res.json();
     return data;
   }
-  async unassignDeviceById(id: Number) {
+  async unassignDeviceById(id: string) {
     try {
       const res = await fetch(`${this.URL}/api/device/${id}`, {
         method: "PUT",
@@ -71,6 +71,24 @@ class RestService {
       });
       if (!res.ok) {
         throw new Error("Failed to declare office");
+      }
+      return await res.json();
+     
+    } catch (err) {
+      console.error(err);
+    }
+  }
+  async declareDevice(resBody: any) {
+    try {
+      const res = await fetch(`${this.URL}/api/devices`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(resBody),
+      });
+      if (!res.ok) {
+        throw new Error("Failed to declare device");
       }
       return await res.json();
      

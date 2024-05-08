@@ -1,13 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
-
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -15,22 +13,21 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
-html,body {
+html,
+body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
-
+body::-webkit-scrollbar {
+  width: 0;
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
-
 .ipt:focus,
 .ipt {
   border: unset !important;
@@ -51,16 +48,48 @@ html,body {
   display: flex;
   align-items: center;
   appearance: none;
+  outline: thin outset #051f4259;
+  border: thin inset #e7ebf038;
+}
+._formIptDate {
+  padding: 0 10px 0 10px;
+  width: 100%;
+  height: 38px;
+  border-radius: 5px;
+  background-color: #0000002c;
+  outline: thin outset #051f4259;
+  border: thin inset #e7ebf038;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  content: url(../../public/assets/calander.svg);
+}
+input[type="date"]::-webkit-calendar-picker-popup {
+  background-color: #232d3d !important;
+}
+input[type="date"]::-webkit-calendar-date {
+  background-color: #232d3d !important;
+}
+._formIpt {
+  padding-left: 10px;
+  width: 100%;
+  height: 38px;
+  border-radius: 5px;
+  background-color: #0000002c;
   outline: thin outset rgba(5, 31, 66, 0.349);
   border: thin inset rgba(231, 235, 240, 0.219);
 }
+._formIpt::placeholder {
+  font-size: 12px;
+  font-style: italic;
+}
+._formIptDate,
+._formIpt,
 ._selectOpt:focus {
   outline: thin outset rgba(5, 31, 66, 0.349);
   border: thin inset rgba(231, 235, 240, 0.219);
   box-shadow: unset;
 }
-
-._selectOpt > option {
+._selectOpt>option {
   color: #cbd5e1;
   background-color: #090909 !important;
 }
@@ -72,13 +101,14 @@ html,body {
 ._bg-trans {
   background-color: #ffffff09 !important;
 }
+
 /* ' Aside */
 aside {
   width: 275px;
   animation-name: aside-anime;
   animation-duration: 500ms;
   z-index: 999 !important;
-  background-color: #090b0f;
+  background-color: #090b0f !important; 
 }
 
 @keyframes aside-anime {
@@ -90,8 +120,7 @@ aside {
     width: 275px;
   }
 }
-
-.anchor-container > div {
+.anchor-container>div {
   background-color: #ffffff09;
   border-bottom: thin solid #334155;
 }
@@ -100,9 +129,9 @@ aside {
 .tabcontent {
   display: none;
 }
-
 /* # border for QR-Reader */
-#canvas {
+#office-canvas,
+#device-canvas {
   border: 5px double #ffffff20;
   border-radius: 5px;
   padding: 10px;
@@ -113,13 +142,11 @@ video {
   background-repeat: no-repeat;
   background-position: center;
 }
-
 /* Custom loader (-_-) */
 .loader-wrapper {
   padding-top: 3px;
   transform: translateX(-6px);
 }
-
 .loader {
   border: 4px solid rgba(172, 241, 82, 0.699);
   border-top: 4px solid #334155;
@@ -128,7 +155,6 @@ video {
   height: 20px;
   animation: spin 1s linear infinite;
 }
-
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -138,17 +164,14 @@ video {
     transform: rotate(360deg);
   }
 }
-
 ._div_line {
-  background: linear-gradient(
-    to right,
-    #334052,
-    #232d3d,
-    #475569,
-    #475569,
-    #a3b6ccd5,
-    #cbd5e1
-  );
+  background: linear-gradient(to right,
+      #334052,
+      #232d3d,
+      #475569,
+      #475569,
+      #a3b6ccd5,
+      #cbd5e1);
   background-position: bottom;
   background-size: 100% 1px;
   background-repeat: no-repeat;
@@ -157,4 +180,86 @@ video {
 
 ._pr {
   padding-right: 15px;
+}
+
+/* Dropdown Table */
+._drp_table {
+  margin: unset !important;
+  padding: unset !important;
+  border-radius: 5px;
+  outline: thin outset rgba(5, 31, 66, 0.349);
+  border: thin inset rgba(231, 235, 240, 0.219);
+}
+
+._drp_table>summary {
+  width: 100%;
+  height: 38px !important;
+  list-style: unset !important;
+}
+
+._drp_table>ul>li>div {
+  height: 130px;
+  overflow-y: scroll;
+}
+
+._drp_table>ul>li>div::-webkit-scrollbar {
+  width: 12px !important;
+  background-color: #ffffff09 !important;
+  border-left: thin solid rgba(128, 128, 128, 0.068) !important;
+}
+
+._drp_table>ul>li>div::-webkit-scrollbar-thumb {
+  background-color: rgba(71, 85, 105, 0.11) !important;
+}
+
+.ThisSPAN {
+  caret-color: red;
+}
+
+._searchIcon {
+  background-image: url(../../public/assets/Search.svg);
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: 99% 8px;
+}
+
+caption {
+  caption-side: bottom;
+  padding: 10px;
+  font-weight: bold;
+}
+
+th,
+td {
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #ffffff09;
+}
+
+@media only screen and (max-width: 915px) {
+
+  tr>td:nth-last-child(-n + 3),
+  tr>th:nth-last-child(-n + 3) {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+
+  tr>td:nth-child(n + 5):nth-child(-n + 6),
+  tr>th:nth-child(n + 5):nth-child(-n + 6) {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 515px) {
+
+  tr>td:nth-child(4),
+  tr>th:nth-child(4),
+  tr>td:first-child,
+  tr>th:first-child {
+    display: none !important;
+  }
 }

@@ -1,15 +1,20 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Aside from "@/components/Aside";
-import List from "@/components/List";
-import Toolbar from "@/components/Toolbar";
+import List from "@/pages/location/List";
 import restService from "@/service/rest.service";
 import Link from "next/link";
 import { useRouter as useRouterRouter } from "next/router";
 import { useRouter as useRouterNavigation } from "next/navigation";
 import { useEffect, useState } from "react";
+import Image from "next/image";
+import InnerHTML from "@/components/InnerHTML";
+import { icons } from "@/static_/icons";
 
 export async function getServerSideProps({ query }: any) {
   const { id } = query;
   const data = await restService.getAssigndDevices(id);
+
+
   return { props: { data } };
 }
 
@@ -34,52 +39,50 @@ const Location = ({ data }: any) => {
 
   const handleMSG = (style: string, text: string) => {
     setMsg({ style: style, text: text });
-    return setTimeout(async() => {
-       await restService.getAssigndDevices( `${location}`);
-       routerNavigation.refresh()
+    return setTimeout(async () => {
+      await restService.getAssigndDevices(`${location}`);
+      routerNavigation.refresh()
       return setMsg({ style: "", text: "" });
     }, 1000);
   };
 
   const onNewScanResult = async ({ data }: any) => {
-    let scandQR = parseInt(data);
-    restService
-      .getAllDevices()
-      .then((items) => {
-        const checked = items.some(({ deviceId }: any) => deviceId === scandQR);
-        if (!checked) {
-          return handleMSG(
-            "text-red-500",
-            `This device with id:${scandQR} is not yet registered or cannot be assigned to this office.`
-          );
-        } else {
-          items.map(({ deviceId, officeNr }: any) => {
-            if (deviceId === scandQR) {
-              if (officeNr === location) {
-                handleMSG(
-                  "text-yellow-400",
-                  `This device is already assigned to this office.`
-                );
-                return;
-              }
-              if (officeNr === "") {
-                  handleMSG(
-                  "text-green-600",
-                  `The device has been successfully assigned to the Office number: <b>${location}</b>`
-                );
-                return restService.assignDevice(deviceId, `${location}`);
-             
-              }
-              if (officeNr !== "" || !officeNr) {
-                return handleMSG(
-                  "text-red-500",
-                  `This device is assigned to another office:  ${officeNr}`
-                );
-              }
+    let scandQR = data;
+    restService.getAllDevices().then((items) => {
+      const checked = items.some(({ deviceId }: any) => deviceId === scandQR);
+      if (!checked) {
+        return handleMSG(
+          "text-red-500",
+          `This device with id:${scandQR} is not yet registered or cannot be assigned to this office.`
+        );
+      } else {
+        items.map(({ deviceId, officeNr }: any) => {
+          if (deviceId === scandQR) {
+            if (officeNr === location) {
+              handleMSG(
+                "text-yellow-400",
+                `This device is already assigned to this office.`
+              );
+              return;
             }
-          });
-        }
-      })
+            if (officeNr === "") {
+              handleMSG(
+                "text-green-600",
+                `The device has been successfully assigned to the Office number: <b>${location}</b>`
+              );
+              return restService.assignDevice(deviceId, `${location}`);
+
+            }
+            if (officeNr !== "" || !officeNr) {
+              return handleMSG(
+                "text-red-500",
+                `This device is assigned to another office:  ${officeNr}`
+              );
+            }
+          }
+        });
+      }
+    })
       .catch((err) => {
         console.error(err);
       });
@@ -105,17 +108,15 @@ const Location = ({ data }: any) => {
               Location: <strong>{location}</strong>
             </span>
             <span>
-              Devices: <strong>{data.length === 0 ? 'No devices assigned to this location' :data.length}</strong>
+              Devices: <strong>{data.length === 0 ? 'No devices assigned to this location' : data.length}</strong>
             </span>
           </div>
-          <Toolbar
-            clss="pr-7 self-end">
-          <Toolbar.Iconbar
-                alt="Assign device to current office"
-                src="/assets/add.svg"
-                onClick={() => setOnShow(!onShow)}
-              />
-          </Toolbar>
+          <button 
+          type="button" 
+          onClick={() => setOnShow(!onShow)} 
+          className="pr-7 self-end">
+              <InnerHTML Convert={icons.addIcon}/>
+          </button>
         </div>
         <div className="m-5">
           <List

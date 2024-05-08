@@ -20,7 +20,7 @@ const Iconbar = ({ src, alt, onClick }: IconbarProps) => {
       width={25}
       alt={alt}
       src={src}
-      className=" hover:border-2 border-solid border-slate-900 rounded-sm"
+      className="hover:border-2 border-solid border-slate-900 rounded-sm"
     />
   );
 };

@@ -81,3 +81,65 @@ export const departmentArr = [
     { title: "Compliance and Regulatory Affairs", value: "CA" },
     { title: "Product Management", value: "PM" }
 ];
+export const Categories = [
+    {
+        id: "1",
+        dName: "Mouse"
+    },
+    {
+        id: "2",
+        dName: "Headset"
+    },
+    {
+        id: "3",
+        dName: "Smartphone"
+    },
+    {
+        id: "4",
+        dName: "Tablet"
+    },
+    {
+        id: "5",
+        dName: "External Hard Drive"
+    },
+    {
+        id: "6",
+        dName: "Webcam"
+    },
+    {
+        id: "7",
+        dName: "Scanner"
+    },
+    {
+        id: "8",
+        dName: "Projector"
+    },
+    {
+        id: "9",
+        dName: "Speaker"
+    },
+    {
+        id: "10",
+        dName: "Printer"
+    },
+    {
+        id: "11",
+        dName: "Laptop"
+    },
+    {
+        id: "12",
+        dName: "Desktop"
+    },
+    {
+        id: "13",
+        dName: "Monitor"
+    },
+    {
+        id: "14",
+        dName: "Smart Watch"
+    }, 
+    {
+        id: "15",
+        dName: "Other"
+    }
+]
