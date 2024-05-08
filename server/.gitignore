@@ -26,6 +26,7 @@ ehthumbs.db
 /db/data.json
 /db/devices.json
 /db/index.js
+/db/qrswift.db
 
 # REST Api testing
 /Requests
